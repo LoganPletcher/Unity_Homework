@@ -3,27 +3,41 @@ using System.Collections;
 
 public class Movement : MonoBehaviour {
 
-    public Transform startMarker;
-    public Transform endMarker;
-    public float speed = 1.0F;
-    private float startTime;
-    private float journeyLength;
+	float r = .5F;
+	bool bounce = false;
 
     // Use this for initialization
     void Start () {
-        startTime = Time.time;
-        journeyLength = Vector3.Distance(startMarker.position, endMarker.position);
+
     }
 	
 	// Update is called once per frame
 	void Update () {
-        //float translation = Time.deltaTime * 10;
-        //if (Input.GetKeyDown(KeyCode.A))
+		float currentPos = transform.position.x;
+        float translation = Time.deltaTime * 10;
+		float rate = r / (5 - currentPos);
+		float rate2 = r / (-5 - currentPos);
+        //if (Input.GetKeyDown(KeyCode.D))
         //{
-
+		if (bounce == false)
+		{
+			transform.position = new Vector3 (((5 - currentPos) * rate), 0, 0);
+			r += .5F;
+			if (currentPos >= 5)
+			{
+				bounce = true;
+			}
+		}
+		if (bounce == true)
+		{
+			transform.position = new Vector3 (((-5 - currentPos) * rate2), 0, 0);
+			r -= .5F;
+			if (currentPos <= -5)
+			{
+				bounce = false;
+			}
+		}
         //}
-        float distCovered = (Time.time - startTime) * speed;
-        float fracJourney = distCovered / journeyLength;
-        transform.position = Vector3.Lerp(startMarker.position, endMarker.position, fracJourney);
+		//transform.position = new Vector3 (((50 - currentPos)*.2F), 0, 0);
     }
 }
