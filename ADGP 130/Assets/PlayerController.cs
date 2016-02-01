@@ -26,8 +26,9 @@ public class PlayerController : MonoBehaviour {
 	void Update ()
     {
         Vector3 Previous = gameObject.transform.position;
-        Vector3 targetDir = target.position - transform.position;
-        angleBetween = Vector3.Angle(transform.forward, targetDir);
+        //Vector3 targetDir = target.position - transform.position;
+        //angleBetween = Vector3.Angle(transform.forward, targetDir);
+
         //Quaternion PrevRotat = gameObject.transform.rotation;
         //gameObject += .5f;
         //gameObject.transform.position = new Vector3();
@@ -103,7 +104,8 @@ public class PlayerController : MonoBehaviour {
         //print(gameObject.transform.rotation.y);
     }
     /*
-            Rx = speed * 0.25f * Input.GetAxis("Mouse Y") * Time.deltaTime; // Sets Rx to the difference the verticle movement of the mouse
+            Rx = speed * 0.25f * Input.GetAxis("Mouse Y") * Time.deltaTime; 
+            // Sets Rx to the difference the verticle movement of the mouse
             Ry = speed * 0.25f * Input.GetAxis("Mouse X") * Time.deltaTime;
     */
 
